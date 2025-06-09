@@ -19,7 +19,7 @@ BuildRequires: boost-regex
 
 BuildRequires: pkgconfig(libcurl)
 BuildRequires: pkgconfig(zlib)
-BuildRequires: pkgconfig(Qt5)
+BuildRequires: pkgconfig(Qt6)
 
 %description
 Ekos Debugger is a helper application to KStars, Ekos, and INDI debugging. It can be used to troubleshoot KStars, INDI, or both.

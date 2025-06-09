@@ -21,6 +21,9 @@
 #include <QStandardItemModel>
 #include <QXmlSimpleReader>
 #include <QStandardPaths>
+#include <QRegExp>
+#include <QString>
+#include <QTextStream>
 
 #include "driverinfo.h"
 #include "userdb.h"
@@ -585,8 +588,8 @@ void DebuggerView::saveKStarsLogs()
         QStringList pieces = KStarsLogFilePath.split( "/" );
         KStarsLogFolderName = pieces.value( pieces.length() - 2 );
         KStarsLogFileName = pieces.value( pieces.length() - 1 );
-        QRegExp separator("[(_|.)]");
-        QStringList parts = KStarsLogFileName.split(separator);
+//        QRegExp separator("[(_|.)]");
+        QStringList parts = KStarsLogFileName.split(QRegularExpression("[(_|.)]"));
         timestamp = KStarsLogFolderName + "T" + parts[1];
     }
     else
@@ -614,7 +617,7 @@ void DebuggerView::saveKStarsLogs()
         if ( debugfile.open(QIODevice::ReadWrite) )
         {
             QTextStream stream( &debugfile );
-            stream << debugLog << endl;
+            stream << debugLog << Qt::endl;
         }
         debugfile.close();
 
@@ -715,7 +718,7 @@ void DebuggerView::saveINDILogs()
         if ( debugfile.open(QIODevice::ReadWrite) )
         {
             QTextStream stream( &debugfile );
-            stream << debugLog << endl;
+            stream << debugLog << Qt::endl;
         }
         debugfile.close();
 
@@ -724,7 +727,7 @@ void DebuggerView::saveINDILogs()
         if ( appfile.open(QIODevice::ReadWrite) )
         {
             QTextStream stream( &appfile );
-            stream << appLog << endl;
+            stream << appLog << Qt::endl;
         }
         appfile.close();
 
